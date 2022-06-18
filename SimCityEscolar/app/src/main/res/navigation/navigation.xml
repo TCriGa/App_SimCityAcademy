@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bimestre1Fragment"
-        android:name="br.com.zup.simcityacademy.BimestresFragments.Bimestre1Fragment"
+        android:name="br.com.zup.simcityacademy.bimestresFragments.bimestre1.Bimestre1Fragment"
         android:label="fragment_bimestre1"
         tools:layout="@layout/fragment_bimestre1" />
 </navigation>

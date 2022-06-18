@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/margin_36"
-    tools:context=".BimestresFragments.Bimestre1Fragment">
+    tools:context=".bimestresFragments.bimestre1.Bimestre1Fragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_nomeAluno"
@@ -56,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_nota" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_listaNotas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_16"

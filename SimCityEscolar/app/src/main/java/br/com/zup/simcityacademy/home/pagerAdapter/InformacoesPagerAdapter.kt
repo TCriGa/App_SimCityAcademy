@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import br.com.zup.simcityacademy.BimestresFragments.Bimestre1Fragment
-import br.com.zup.simcityacademy.BimestresFragments.Bimestre2Fragment
+import br.com.zup.simcityacademy.bimestresFragments.bimestre1.Bimestre1Fragment
+import br.com.zup.simcityacademy.bimestresFragments.bimestre2.Bimestre2Fragment
 
 class InformacoesPagerAdapter(
     fragmentManager: FragmentManager,

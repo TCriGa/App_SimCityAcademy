@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/margin_36"
-    tools:context=".BimestresFragments.Bimestre2Fragment">
+    tools:context=".bimestresFragments.bimestre2.Bimestre2Fragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_nomeAluno"
