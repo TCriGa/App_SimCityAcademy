@@ -4,24 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeFragment">
+    android:paddingTop="@dimen/margin_36"
+    tools:context=".BimestresFragments.Bimestre2Fragment">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_Materia"
+        android:id="@+id/edit_nomeAluno"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_36"
-        android:hint="@string/nome_materia"
+        android:layout_margin="@dimen/margin_16"
+        android:hint="@string/nome_do_aluno"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/edit_Materia"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_Materia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_16"
+        android:hint="@string/nome_materia"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_nomeAluno" />
+
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_nota"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_36"
+        android:layout_margin="@dimen/margin_16"
         android:hint="@string/valor_nota"
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -32,7 +45,7 @@
         android:id="@+id/button_adicionarNotas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_36"
+        android:layout_margin="@dimen/margin_16"
         android:backgroundTint="@color/verde_escuro"
         android:text="@string/adicionar_notas"
         app:layout_constraintHorizontal_bias="0.222"

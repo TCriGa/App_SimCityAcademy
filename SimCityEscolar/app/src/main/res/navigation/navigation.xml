@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/bimestre1Fragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="br.com.zup.simcityacademy.home.HomeFragment"
-        android:label="fragment_home2"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/bimestre1Fragment"
+        android:name="br.com.zup.simcityacademy.BimestresFragments.Bimestre1Fragment"
+        android:label="fragment_bimestre1"
+        tools:layout="@layout/fragment_bimestre1" />
 </navigation>

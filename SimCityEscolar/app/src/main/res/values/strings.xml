@@ -8,4 +8,5 @@
     <string name="adicionar_notas">Adicionar Notas</string>
     <string name="materia">Matéria</string>
     <string name="nota">Nota</string>
+    <string name="nome_do_aluno">Nome do Aluno</string>
 </resources>
