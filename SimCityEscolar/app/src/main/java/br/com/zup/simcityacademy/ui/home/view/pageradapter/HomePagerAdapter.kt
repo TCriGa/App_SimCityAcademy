@@ -1,13 +1,12 @@
-package br.com.zup.simcityacademy.home.pagerAdapter
+package br.com.zup.simcityacademy.ui.home.view.pageradapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import br.com.zup.simcityacademy.bimestresFragments.bimestre1.Bimestre1Fragment
-import br.com.zup.simcityacademy.bimestresFragments.bimestre2.Bimestre2Fragment
+import br.com.zup.simcityacademy.ui.bimester.view.BimesterFragment
 
-class InformacoesPagerAdapter(
+class HomePagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
     private var listanotas: List<String>
@@ -18,10 +17,12 @@ class InformacoesPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return Bimestre1Fragment()
-            1 -> return Bimestre2Fragment()
+            0 -> return BimesterFragment()
+            1 -> return BimesterFragment()
+            2 -> return BimesterFragment()
+            3 -> return BimesterFragment()
 
         }
-        return Bimestre1Fragment()
+        return BimesterFragment()
     }
 }

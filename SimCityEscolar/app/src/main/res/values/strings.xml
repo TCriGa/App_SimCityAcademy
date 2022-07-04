@@ -9,4 +9,9 @@
     <string name="materia">Matéria</string>
     <string name="nota">Nota</string>
     <string name="nome_do_aluno">Nome do Aluno</string>
+    <string name="materia_desejada">Selecione abaixo a matéria desejada:</string>
+    <string-array name="materias">
+        <item>Português</item>
+        <item>Matemática</item>
+    </string-array>
 </resources>

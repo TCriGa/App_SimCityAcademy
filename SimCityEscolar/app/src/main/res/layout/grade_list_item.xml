@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_materia"
+            android:id="@+id/text_matter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_36"
@@ -31,14 +31,14 @@
             app:layout_constraintLeft_toRightOf="@+id/image_hat"
             app:layout_constraintTop_toTopOf="@id/image_hat" />
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_nota"
+            android:id="@+id/text_grade"
             android:layout_margin="@dimen/margin_36"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/nota"
-            app:layout_constraintLeft_toRightOf="@id/text_materia"
-            app:layout_constraintBottom_toBottomOf="@id/text_materia"
-            app:layout_constraintTop_toTopOf="@id/text_materia"
+            app:layout_constraintLeft_toRightOf="@id/text_matter"
+            app:layout_constraintBottom_toBottomOf="@id/text_matter"
+            app:layout_constraintTop_toTopOf="@id/text_matter"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

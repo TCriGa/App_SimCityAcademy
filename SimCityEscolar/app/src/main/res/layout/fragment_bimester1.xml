@@ -5,30 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/margin_36"
-    tools:context=".bimestresFragments.bimestre2.Bimestre2Fragment">
+    tools:context=".ui.bimester.view.BimesterFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_nomeAluno"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_informacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/size_16"
         android:layout_margin="@dimen/margin_16"
-        android:hint="@string/nome_do_aluno"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edit_Materia"
+        android:text="@string/materia_desejada"
+        app:layout_constraintBottom_toTopOf="@id/sp_materia"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_Materia"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/margin_16"
-        android:hint="@string/nome_materia"
-        android:inputType="text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_nomeAluno" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edit_nota"
@@ -39,7 +31,8 @@
         android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_Materia" />
+        app:layout_constraintTop_toBottomOf="@id/sp_materia"
+        tools:layout_editor_absoluteY="158dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_adicionarNotas"
@@ -48,20 +41,37 @@
         android:layout_margin="@dimen/margin_16"
         android:backgroundTint="@color/verde_escuro"
         android:text="@string/adicionar_notas"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_nota" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/sp_materia"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_16"
+        android:layout_marginBottom="44dp"
+        android:entries="@array/materias"
+        app:layout_constraintBottom_toTopOf="@+id/edit_nota"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_informacao" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_listaNotas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_16"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_adicionarNotas"
         tools:itemCount="5"
-        tools:listitem="@layout/lista_notas_item" />
+        tools:listitem="@layout/grade_list_item" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

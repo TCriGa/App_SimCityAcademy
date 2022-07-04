@@ -1,31 +1,29 @@
-package br.com.zup.simcityacademy.home
+package br.com.zup.simcityacademy.ui.home.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import br.com.zup.simcityacademy.R
 import br.com.zup.simcityacademy.databinding.ActivityHomeBinding
-import br.com.zup.simcityacademy.home.pagerAdapter.InformacoesPagerAdapter
+import br.com.zup.simcityacademy.ui.home.view.pageradapter.HomePagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private val listaTitulos = listOf("1º Bimestre", "2º Bimentre")
+    private val titlesList = listOf("1º Bim", "2º Bim", "3º Bim", "4º Bim")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        exibirViewPagerTabLayout()
+        exhibitViewPagerTabLayout()
     }
 
-    private fun exibirViewPagerTabLayout() {
-        val informacoesPagerAdapter =
-            InformacoesPagerAdapter(supportFragmentManager, lifecycle, listaTitulos)
-        binding.vpInformacoes.adapter = informacoesPagerAdapter
+    private fun exhibitViewPagerTabLayout() {
+        val homePagerAdapter =
+            HomePagerAdapter(supportFragmentManager, lifecycle, titlesList)
+        binding.vpInformacoes.adapter = homePagerAdapter
 
         TabLayoutMediator(binding.tlInformacoes, binding.vpInformacoes) { tab, posicao ->
-            tab.text = listaTitulos[posicao]
+            tab.text = titlesList[posicao]
         }.attach()
     }
 }

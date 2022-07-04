@@ -1,10 +1,10 @@
-package br.com.zup.simcityacademy.splash
+package br.com.zup.simcityacademy.ui.splash.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.zup.simcityacademy.R
-import br.com.zup.simcityacademy.home.HomeActivity
+import br.com.zup.simcityacademy.ui.home.view.HomeActivity
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {
