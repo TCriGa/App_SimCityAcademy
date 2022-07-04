@@ -1,17 +1,18 @@
 package br.com.zup.simcityacademy.domain.usecase
 
-import br.com.zup.simcityacademy.domain.model.BimesterModel
+import android.app.Application
+import br.com.zup.simcityacademy.domain.model.Bimester
 
-class BimesterUseCase {
-    private val listGradesBimesterModels = mutableListOf<BimesterModel>()
+class BimesterUseCase() {
+    private val listGradesBimesters = mutableListOf<Bimester>()
 
-    fun getListGrades() : MutableList<BimesterModel> {
-        return listGradesBimesterModels
+    fun getListGrades() : MutableList<Bimester> {
+        return listGradesBimesters
     }
 
-    fun addGradeList(bimester1: BimesterModel){
+    fun addGradeList(bimester1: Bimester){
 
-        listGradesBimesterModels.add(bimester1)
+        listGradesBimesters.add(bimester1)
     }
 
 }

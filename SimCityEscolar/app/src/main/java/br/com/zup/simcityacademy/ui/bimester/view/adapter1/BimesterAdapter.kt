@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.zup.simcityacademy.databinding.GradeListItemBinding
-import br.com.zup.simcityacademy.domain.model.BimesterModel
+import br.com.zup.simcityacademy.domain.model.Bimester
 
 class BimesterAdapter(
-    private var gradeList: MutableList<BimesterModel>
+    private var gradeList: MutableList<Bimester>
 
 ) : RecyclerView.Adapter<BimesterAdapter.ViewHolder>() {
 
@@ -25,7 +25,7 @@ class BimesterAdapter(
     override fun getItemCount(): Int = gradeList.size
 
 
-    fun atualizarListaAlbum(novaLista : MutableList<BimesterModel>){
+    fun atualizarListaAlbum(novaLista : MutableList<Bimester>){
         if (gradeList.size == 0){
             gradeList = novaLista
         }else{
@@ -35,9 +35,9 @@ class BimesterAdapter(
     }
 
     class ViewHolder(private val binding: GradeListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun exhibitGradeList(bimesterModel: BimesterModel) {
-            binding.textGrade.text = bimesterModel.grade.toString()
-            binding.textMatter.text = bimesterModel.matter
+        fun exhibitGradeList(bimester: Bimester) {
+            binding.textGrade.text = bimester.grade.toString()
+            binding.textMatter.text = bimester.matter
 
         }
     }
