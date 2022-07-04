@@ -9,5 +9,5 @@
         android:id="@+id/bimestre1Fragment"
         android:name="br.com.zup.simcityacademy.ui.bimester.view.BimesterFragment"
         android:label="fragment_bimestre1"
-        tools:layout="@layout/fragment_bimester1" />
+        tools:layout="@layout/fragment_bimester" />
 </navigation>

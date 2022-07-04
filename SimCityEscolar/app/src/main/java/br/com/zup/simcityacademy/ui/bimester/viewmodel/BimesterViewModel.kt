@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.zup.simcityacademy.domain.model.BimesterModel
-import br.com.zup.simcityacademy.domain.repository.BimesterRepository
+import br.com.zup.simcityacademy.domain.usecase.BimesterUseCase
 
 class BimesterViewModel:ViewModel() {
-    private val repository = BimesterRepository()
+    private val repository = BimesterUseCase()
     private val _response: MutableLiveData<List<BimesterModel>> = MutableLiveData()
     val response: LiveData<List<BimesterModel>> = _response
 

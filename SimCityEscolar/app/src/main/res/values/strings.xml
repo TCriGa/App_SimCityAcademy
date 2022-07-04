@@ -11,7 +11,21 @@
     <string name="nome_do_aluno">Nome do Aluno</string>
     <string name="materia_desejada">Selecione abaixo a matéria desejada:</string>
     <string-array name="materias">
-        <item>Português</item>
-        <item>Matemática</item>
+        <item>Agilidade e Soluções Mobile em Negócios</item>
+        <item>Organização e Planejamento Aplicação Mobile</item>
+        <item>Desenvolvimento de aplicativos Android</item>
+        <item>Desenvolvimento de aplicativos IOS</item>
+        <item>Aplicações Hibridas e IOT</item>
+        <item>Infraestrutura e Automação de Processos</item>
+        <item>Design para dispositivos Móbiles</item>
+        <item>Móbile game design</item>
+        <item> Design thinking</item>
+        <item> Estratégia empresarial</item>
+        <item> Integração de banco de dados</item>
+        <item>Ferramentas de inteligência de negócios</item>
+        <item>Finanças empresariais</item>
+        <item>Governança corporativa e excelência empresarial</item>
+        <item>Marketing estratégico</item>
+        <item>Mercado Mobile</item>
     </string-array>
 </resources>

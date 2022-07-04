@@ -1,8 +1,8 @@
-package br.com.zup.simcityacademy.domain.repository
+package br.com.zup.simcityacademy.domain.usecase
 
 import br.com.zup.simcityacademy.domain.model.BimesterModel
 
-class BimesterRepository {
+class BimesterUseCase {
     private val listGradesBimesterModels = mutableListOf<BimesterModel>()
 
     fun getListGrades() : MutableList<BimesterModel> {

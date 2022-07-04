@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import br.com.zup.simcityacademy.MENSAGEM_ERRO_NOTA
-import br.com.zup.simcityacademy.databinding.FragmentBimester1Binding
+import br.com.zup.simcityacademy.databinding.FragmentBimesterBinding
+
 import br.com.zup.simcityacademy.domain.model.BimesterModel
 import br.com.zup.simcityacademy.ui.bimester.view.adapter1.BimesterAdapter
 import br.com.zup.simcityacademy.ui.bimester.viewmodel.BimesterViewModel
 
 class BimesterFragment : Fragment() {
-    private lateinit var binding: FragmentBimester1Binding
+    private lateinit var binding: FragmentBimesterBinding
 
     private val listNotesAdapter: BimesterAdapter by lazy {
         BimesterAdapter(arrayListOf())
@@ -27,7 +28,7 @@ class BimesterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBimester1Binding.inflate(inflater, container, false)
+        binding = FragmentBimesterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -35,7 +36,6 @@ class BimesterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         exhibitRecycleView()
         observable()
-        verifierDadsInserts()
         clickButtonAdd()
     }
 
@@ -47,11 +47,14 @@ class BimesterFragment : Fragment() {
 
     private fun clickButtonAdd() {
         binding.buttonAdicionarNotas.setOnClickListener {
-            val grade = BimesterModel(
-                binding.spMateria.selectedItem.toString(),
-                binding.editNota.text.toString().toDouble()
-            )
-            viewModel1.addGrade(grade)
+            if (!verifierDadsInserts()){
+                val grade = BimesterModel(
+                    binding.spMateria.selectedItem.toString(),
+                    binding.editNota.text.toString().toDouble()
+                )
+                viewModel1.addGrade(grade)
+            }
+
         }
     }
 

@@ -27,7 +27,7 @@
             android:layout_margin="@dimen/margin_36"
             android:text="@string/materia"
             app:layout_constraintBottom_toBottomOf="@id/image_hat"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintRight_toLeftOf="@id/text_grade"
             app:layout_constraintLeft_toRightOf="@+id/image_hat"
             app:layout_constraintTop_toTopOf="@id/image_hat" />
         <androidx.appcompat.widget.AppCompatTextView
