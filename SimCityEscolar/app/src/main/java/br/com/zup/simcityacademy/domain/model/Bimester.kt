@@ -10,10 +10,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "Informacoes_bimestre")
 data class Bimester(
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "cod_matter")
-    val codMatter: Long = 1,
-
+    @PrimaryKey
     @ColumnInfo
     val matter: String,
 

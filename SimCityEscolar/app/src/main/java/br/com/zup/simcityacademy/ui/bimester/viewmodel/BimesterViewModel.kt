@@ -1,30 +1,46 @@
 package br.com.zup.simcityacademy.ui.bimester.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import br.com.zup.simcityacademy.domain.model.Bimester
 import br.com.zup.simcityacademy.domain.usecase.BimesterUseCase
+import br.com.zup.simcityacademy.ui.viewstate.ViewState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class BimesterViewModel:ViewModel() {
-    private val repository = BimesterUseCase()
-    private val _response: MutableLiveData<List<Bimester>> = MutableLiveData()
-    val response: LiveData<List<Bimester>> = _response
+class BimesterViewModel(application: Application) : AndroidViewModel(application) {
+    private val bimesterUseCase = BimesterUseCase(application)
+    var viewState = ViewState()
 
-    private fun getAllGrade() {
-        try {
-            _response.value = repository.getListGrades()
-        } catch (ex: Exception) {
-            Log.i("Error", "------> ${ex.message}")
+
+    fun insertInformations(bimester: Bimester) {
+        viewModelScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    bimesterUseCase.insertAllInformation(bimester)
+                }
+                viewState.state.value= ViewState.State.SUCCESS
+                getInformation()
+            } catch (ex: Exception) {
+                viewState.state.value = ViewState.State.ERROR
+            }
         }
     }
-    fun addGrade(bimester1: Bimester){
-        try {
-            repository.addGradeList(bimester1)
-            getAllGrade()
-        } catch (ex: Exception) {
-            Log.i("Error", "------> ${ex.message}")
+
+    fun getInformation() {
+        viewModelScope.launch {
+            try {
+
+               val response = withContext(Dispatchers.IO) {
+                    bimesterUseCase.getAllInformation()
+                }
+                viewState.bimester.value = response
+                viewState.state.value = ViewState.State.SUCCESS
+            } catch (ex: Exception) {
+                viewState.state.value = ViewState.State.ERROR
+            }
         }
     }
 }

@@ -24,17 +24,17 @@ class BimesterAdapter(
 
     override fun getItemCount(): Int = gradeList.size
 
-
-    fun atualizarListaAlbum(novaLista : MutableList<Bimester>){
-        if (gradeList.size == 0){
-            gradeList = novaLista
-        }else{
-            gradeList.addAll(novaLista)
+    fun updateListGrade(newList: List<Bimester>) {
+        if (gradeList.size == 0) {
+            gradeList = newList as MutableList<Bimester>
+        } else {
+            gradeList.addAll(newList)
         }
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: GradeListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: GradeListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun exhibitGradeList(bimester: Bimester) {
             binding.textGrade.text = bimester.grade.toString()
             binding.textMatter.text = bimester.matter
