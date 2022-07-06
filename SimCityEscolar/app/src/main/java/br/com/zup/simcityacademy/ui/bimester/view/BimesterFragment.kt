@@ -14,7 +14,7 @@ import br.com.zup.simcityacademy.ui.bimester.viewmodel.BimesterViewModel
 
 class BimesterFragment : Fragment() {
     private lateinit var binding: FragmentBimesterBinding
-    var type: Int? = null
+    var type: Int = 1
 
     companion object {
         fun newInstance(type: Int): BimesterFragment {
@@ -43,18 +43,18 @@ class BimesterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         exhibitRecycleView()
-        initiObserver()
+        initObserver()
         clickButtonAdd()
     }
 
     private fun clickButtonAdd() {
         binding.buttonAdicionarNotas.setOnClickListener {
             if (verifierDadsInserts()) {
-                viewModel.insertInformations(
+                viewModel.insertBimester(
                     Bimester(
-                        1,
-                        binding.spMateria.selectedItem.toString(),
-                        binding.editNota.text.toString().toDouble()
+                        matter = binding.spMateria.selectedItem.toString(),
+                        grade = binding.editNota.text.toString().toDouble(),
+                        bimesterNumber = type
                     )
                 )
                 clearEditFields()
@@ -64,7 +64,6 @@ class BimesterFragment : Fragment() {
 
     private fun exhibitRecycleView() {
         binding.rvListaNotas.adapter = listNotesAdapter
-
     }
 
     private fun verifierDadsInserts(): Boolean {
@@ -82,8 +81,8 @@ class BimesterFragment : Fragment() {
         binding.editNota.text?.clear()
     }
 
-    private fun initiObserver() {
-        viewModel.getInformation()
+    private fun initObserver() {
+        viewModel.getBimester(type)
         viewModel.viewState.bimester.observe(this.viewLifecycleOwner) {
             listNotesAdapter.updateListGrade(it)
         }

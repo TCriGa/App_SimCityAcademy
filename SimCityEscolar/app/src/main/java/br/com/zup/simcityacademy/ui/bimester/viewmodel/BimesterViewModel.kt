@@ -12,28 +12,28 @@ import kotlinx.coroutines.withContext
 
 class BimesterViewModel(application: Application) : AndroidViewModel(application) {
     private val bimesterUseCase = BimesterUseCase(application)
-    var viewState = ViewState()
+    var viewState =  ViewState()
 
 
-    fun insertInformations(bimester: Bimester) {
+    fun insertBimester(bimester: Bimester) {
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.IO) {
                     bimesterUseCase.insertBimester(bimester)
                 }
                 viewState.state.value= ViewState.State.SUCCESS
-                getInformation()
+                getBimester(bimester.bimesterNumber)
             } catch (ex: Exception) {
                 viewState.state.value = ViewState.State.ERROR
             }
         }
     }
 
-    fun getInformation() {
+    fun getBimester(bimesterNumber: Int) {
         viewModelScope.launch {
             try {
                val response = withContext(Dispatchers.IO) {
-                    bimesterUseCase.getBimester()
+                    bimesterUseCase.getBimester(bimesterNumber)
                 }
                 viewState.bimester.value = response
                 viewState.state.value = ViewState.State.SUCCESS

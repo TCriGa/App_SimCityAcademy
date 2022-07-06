@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import br.com.zup.simcityacademy.data.datasource.local.dao.BimesterDAO
 import br.com.zup.simcityacademy.domain.model.Bimester
 
-@Database(entities = [Bimester::class], version = 3)
+@Database(entities = [Bimester::class], version = 4)
 abstract class BimesterDataBase : RoomDatabase() {
 
     abstract fun bimesterDAO() : BimesterDAO

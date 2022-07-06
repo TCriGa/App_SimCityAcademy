@@ -9,10 +9,13 @@ import br.com.zup.simcityacademy.domain.model.Bimester
 @Dao
 interface BimesterDAO {
 
-    @Query("SELECT * FROM informacoes_bimestre")
+    @Query("SELECT * FROM information_bimester ORDER BY matter ASC")
     fun getBimester(): List<Bimester>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertBimester(bimester: Bimester)
+
+    @Query("SELECT * FROM information_bimester WHERE bimester_number =:bimesterNumber")
+    fun getBimesterByNumber(bimesterNumber: Int): List<Bimester>
 
 }

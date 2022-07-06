@@ -17,10 +17,10 @@ class HomePagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return BimesterFragment.newInstance(0)
-            1 -> return BimesterFragment.newInstance(1)
-            2 -> return BimesterFragment.newInstance(2)
-            3 -> return BimesterFragment.newInstance(3)
+            0 -> return BimesterFragment.newInstance(1)
+            1 -> return BimesterFragment.newInstance(2)
+            2 -> return BimesterFragment.newInstance(3)
+            3 -> return BimesterFragment.newInstance(4)
 
         }
         return BimesterFragment()

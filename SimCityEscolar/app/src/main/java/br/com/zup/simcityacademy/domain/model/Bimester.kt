@@ -7,16 +7,19 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "Informacoes_bimestre")
+@Entity(tableName = "Information_bimester")
 data class Bimester(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo
-    var id : Int =1,
+    var id : Int? = null,
 
     @ColumnInfo(name = "matter")
     var matter: String,
 
     @ColumnInfo(name = "grade")
-    var grade: Double
+    var grade: Double,
+
+    @ColumnInfo(name = "bimester_number")
+    val bimesterNumber: Int
 ) : Parcelable

@@ -9,8 +9,8 @@ class BimesterUseCase(application: Application) {
     private val bimesterDAO = BimesterDataBase.getDataBase(application).bimesterDAO()
     private val bimesterRepository = BimesterRepository(bimesterDAO)
 
-    suspend fun getBimester(): List<Bimester> {
-        return bimesterRepository.getBimester()
+    suspend fun getBimester(bimesterNumber: Int): List<Bimester> {
+        return bimesterRepository.getBimester(bimesterNumber)
     }
     suspend fun insertBimester(bimester: Bimester) {
        bimesterRepository.insertBimester(bimester)

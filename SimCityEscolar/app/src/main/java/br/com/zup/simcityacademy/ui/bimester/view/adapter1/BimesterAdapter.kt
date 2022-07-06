@@ -25,11 +25,7 @@ class BimesterAdapter(
     override fun getItemCount(): Int = gradeList.size
 
     fun updateListGrade(newList: List<Bimester>) {
-        if (gradeList.size == 0) {
-            gradeList = newList as MutableList<Bimester>
-        } else {
-            gradeList.addAll(newList)
-        }
+        gradeList = newList as MutableList<Bimester>
         notifyDataSetChanged()
     }
 
