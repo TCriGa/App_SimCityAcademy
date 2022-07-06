@@ -19,7 +19,7 @@ class BimesterViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.IO) {
-                    bimesterUseCase.insertAllInformation(bimester)
+                    bimesterUseCase.insertBimester(bimester)
                 }
                 viewState.state.value= ViewState.State.SUCCESS
                 getInformation()
@@ -32,9 +32,8 @@ class BimesterViewModel(application: Application) : AndroidViewModel(application
     fun getInformation() {
         viewModelScope.launch {
             try {
-
                val response = withContext(Dispatchers.IO) {
-                    bimesterUseCase.getAllInformation()
+                    bimesterUseCase.getBimester()
                 }
                 viewState.bimester.value = response
                 viewState.state.value = ViewState.State.SUCCESS

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import br.com.zup.simcityacademy.data.datasource.local.dao.BimesterDAO
 import br.com.zup.simcityacademy.domain.model.Bimester
 
-@Database(entities = [Bimester::class], version = 1)
+@Database(entities = [Bimester::class], version = 3)
 abstract class BimesterDataBase : RoomDatabase() {
 
     abstract fun bimesterDAO() : BimesterDAO
@@ -25,7 +25,9 @@ abstract class BimesterDataBase : RoomDatabase() {
                     context.applicationContext,
                     BimesterDataBase::class.java,
                     "bimester_dataBase"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INTANCE = instance
                 return instance
             }

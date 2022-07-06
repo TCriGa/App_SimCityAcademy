@@ -10,10 +10,13 @@ import kotlinx.android.parcel.Parcelize
 @Entity(tableName = "Informacoes_bimestre")
 data class Bimester(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo
-    val matter: String,
+    var id : Int =1,
 
-    @ColumnInfo
-    val grade: Double
+    @ColumnInfo(name = "matter")
+    var matter: String,
+
+    @ColumnInfo(name = "grade")
+    var grade: Double
 ) : Parcelable

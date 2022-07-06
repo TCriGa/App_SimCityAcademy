@@ -5,9 +5,8 @@ import br.com.zup.simcityacademy.domain.model.Bimester
 
 class BimesterRepository(private val bimesterDAO: BimesterDAO) {
 
-    suspend fun getAllgrade(): List<Bimester> = bimesterDAO.getAllGrade()
-
-    suspend fun insertInformations(bimester: Bimester){
-        bimesterDAO.insertGrade(bimester)
+    suspend fun insertBimester(bimester: Bimester){
+        bimesterDAO.insertBimester(bimester)
     }
-}
+    suspend fun getBimester() : List<Bimester> = bimesterDAO.getBimester()
+    }
