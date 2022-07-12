@@ -2,6 +2,7 @@ package br.com.zup.simcityacademy.ui.bimester.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.com.zup.simcityacademy.domain.model.Bimester
 import br.com.zup.simcityacademy.domain.usecase.BimesterUseCase
@@ -12,17 +13,17 @@ import kotlinx.coroutines.withContext
 
 class BimesterViewModel(application: Application) : AndroidViewModel(application) {
     private val bimesterUseCase = BimesterUseCase(application)
-    var viewState =  ViewState()
+    val viewState = ViewState()
 
 
     fun insertBimester(bimester: Bimester) {
         viewModelScope.launch {
             try {
-                withContext(Dispatchers.IO) {
+                val response = withContext(Dispatchers.IO) {
                     bimesterUseCase.insertBimester(bimester)
                 }
-                viewState.state.value= ViewState.State.SUCCESS
-                getBimester(bimester.bimesterNumber)
+                viewState.state.value = ViewState.State.SUCCESS
+                bimester.bimesterNumber?.let { getBimester(it) }
             } catch (ex: Exception) {
                 viewState.state.value = ViewState.State.ERROR
             }
@@ -32,10 +33,23 @@ class BimesterViewModel(application: Application) : AndroidViewModel(application
     fun getBimester(bimesterNumber: Int) {
         viewModelScope.launch {
             try {
-               val response = withContext(Dispatchers.IO) {
+                val response = withContext(Dispatchers.IO) {
                     bimesterUseCase.getBimester(bimesterNumber)
                 }
                 viewState.bimester.value = response
+                viewState.state.value = ViewState.State.SUCCESS
+            } catch (ex: Exception) {
+                viewState.state.value = ViewState.State.ERROR
+            }
+        }
+    }
+
+    fun updateBimester(bimester: Bimester) {
+        viewModelScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    bimesterUseCase.updateGrades(bimester)
+                }
                 viewState.state.value = ViewState.State.SUCCESS
             } catch (ex: Exception) {
                 viewState.state.value = ViewState.State.ERROR

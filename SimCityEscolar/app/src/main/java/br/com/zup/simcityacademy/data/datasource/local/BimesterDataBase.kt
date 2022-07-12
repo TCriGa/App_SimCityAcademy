@@ -7,16 +7,16 @@ import androidx.room.RoomDatabase
 import br.com.zup.simcityacademy.data.datasource.local.dao.BimesterDAO
 import br.com.zup.simcityacademy.domain.model.Bimester
 
-@Database(entities = [Bimester::class], version = 4)
+@Database(entities = [Bimester::class], version = 6)
 abstract class BimesterDataBase : RoomDatabase() {
 
     abstract fun bimesterDAO() : BimesterDAO
 
     companion object{
-        private var INTANCE : BimesterDataBase? = null
+        private var INSTANCE : BimesterDataBase? = null
 
         fun getDataBase(context: Context): BimesterDataBase{
-            val tempInstance = INTANCE
+            val tempInstance = INSTANCE
             if (tempInstance != null){
                 return tempInstance
             }
@@ -28,7 +28,7 @@ abstract class BimesterDataBase : RoomDatabase() {
                 )
                     .fallbackToDestructiveMigration()
                     .build()
-                INTANCE = instance
+                INSTANCE = instance
                 return instance
             }
         }

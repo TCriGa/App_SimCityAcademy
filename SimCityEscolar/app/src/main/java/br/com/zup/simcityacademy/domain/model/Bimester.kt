@@ -15,11 +15,11 @@ data class Bimester(
     var id : Int? = null,
 
     @ColumnInfo(name = "matter")
-    var matter: String,
+    var matter: String? = null,
 
     @ColumnInfo(name = "grade")
-    var grade: Double,
+    var grade: Float? = null,
 
     @ColumnInfo(name = "bimester_number")
-    val bimesterNumber: Int
+    var bimesterNumber: Int? = null
 ) : Parcelable
