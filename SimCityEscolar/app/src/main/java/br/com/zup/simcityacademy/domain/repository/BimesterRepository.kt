@@ -14,7 +14,7 @@ class BimesterRepository(private val bimesterDAO: BimesterDAO) {
         bimesterDAO.getBimesterByNumber(bimesterNumber)
 
 
-    suspend fun updateAVGGrade(bimester: Bimester) {
+    suspend fun updateAVGGrade(bimester: Bimester) =
         bimesterDAO.updateAVGGrade(bimester)
-    }
+
 }

@@ -40,4 +40,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="editando_valor_da_nota">Editando valor da nota</string>
     <string name="editar_notas">Editar Notas</string>
+    <string name="edit_grade">Edição de notas</string>
+    <string name="add_grade">Adicionar Notas</string>
 </resources>

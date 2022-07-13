@@ -2,21 +2,21 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
+    android:id="@+id/nav_graf"
     app:startDestination="@id/homeFragment">
 
     <fragment
+        android:id="@+id/bimesterEditFragment"
+        android:name="br.com.zup.simcityacademy.ui.bimesteredit.view.BimesterEditFragment"
+        android:label="@string/edit_grade"
+        tools:layout="@layout/fragment_bimester_edit" />
+    <fragment
         android:id="@+id/homeFragment"
         android:name="br.com.zup.simcityacademy.ui.home.view.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/add_grade"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_bimesterFragment"
-            app:destination="@id/bimesterFragment" />
+            android:id="@+id/action_homeFragment_to_bimesterEditFragment"
+            app:destination="@id/bimesterEditFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/bimesterFragment"
-        android:name="br.com.zup.simcityacademy.ui.bimester.view.BimesterFragment"
-        android:label="fragment_bimester"
-        tools:layout="@layout/fragment_bimester" />
 </navigation>

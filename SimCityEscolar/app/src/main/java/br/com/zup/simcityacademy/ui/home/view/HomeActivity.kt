@@ -13,23 +13,17 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private val titlesList = listOf("1º Bim", "2º Bim", "3º Bim", "4º Bim")
 
+    private val navController: NavController by lazy { findNavController(R.id.fragmentContainerView) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        exhibitViewPagerTabLayout()
+        setupActionBarWithNavController(navController)
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-    private fun exhibitViewPagerTabLayout() {
-        val homePagerAdapter =
-            HomePagerAdapter(supportFragmentManager, lifecycle, titlesList)
-        binding.vpInformacoes.adapter = homePagerAdapter
 
-        TabLayoutMediator(binding.tlInformacoes, binding.vpInformacoes) { tab, posicao ->
-            tab.text = titlesList[posicao]
-        }.attach()
-    }
 }

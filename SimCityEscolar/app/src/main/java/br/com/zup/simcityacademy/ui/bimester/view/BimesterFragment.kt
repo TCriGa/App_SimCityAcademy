@@ -4,16 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import br.com.zup.simcityacademy.BIMESTER_KEY
 import br.com.zup.simcityacademy.MENSAGEM_ERRO_NOTA
+import br.com.zup.simcityacademy.R
 import br.com.zup.simcityacademy.databinding.FragmentBimesterBinding
 import br.com.zup.simcityacademy.domain.model.Bimester
 import br.com.zup.simcityacademy.ui.bimester.view.adapter1.BimesterAdapter
 import br.com.zup.simcityacademy.ui.bimester.viewmodel.BimesterViewModel
-import br.com.zup.simcityacademy.ui.viewstate.ViewState
 
 class BimesterFragment : Fragment() {
     private lateinit var binding: FragmentBimesterBinding
@@ -45,10 +46,11 @@ class BimesterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exhibitRecycleView()
+        setRecycleView()
         initObserver()
         clickButtonAdd()
     }
+
 
     private fun clickButtonAdd() {
         binding.buttonAdicionarNotas.setOnClickListener {
@@ -65,25 +67,13 @@ class BimesterFragment : Fragment() {
         }
     }
 
-    private fun exhibitRecycleView() {
+    private fun setRecycleView() {
         binding.rvListaNotas.adapter = listNotesAdapter
     }
 
     private fun verifierDadsInserts(): Boolean {
         when {
-
             binding.editNota.text?.isEmpty() == true -> {
-                binding.editNota.error = MENSAGEM_ERRO_NOTA
-                return false
-            }
-        }
-        return true
-    }
-
-    private fun verifierDadsEdit(): Boolean {
-        when {
-
-            binding.editNotaEdit.text?.isEmpty() == true -> {
                 binding.editNota.error = MENSAGEM_ERRO_NOTA
                 return false
             }
@@ -97,30 +87,16 @@ class BimesterFragment : Fragment() {
     }
 
     private fun initObserver() {
-        viewModel.viewState.bimester.observe(this.viewLifecycleOwner){
+        viewModel.viewState.bimester.observe(this.viewLifecycleOwner) {
             listNotesAdapter.updateListGrade(it)
         }
     }
 
     private fun goEditBimester(bimester: Bimester) {
-        enableEditMode(bimester)
+        val bundle = bundleOf(BIMESTER_KEY to bimester)
+        NavHostFragment.findNavController(this)
+            .navigate(R.id.action_homeFragment_to_bimesterEditFragment, bundle)
     }
 
-    private fun enableEditMode(bimester: Bimester) {
-        binding.editNotaEdit.visibility = View.VISIBLE
-        binding.buttonAdicionarNotasEdit.visibility = View.VISIBLE
-        binding.buttonAdicionarNotasEdit.setOnClickListener {
-            bimester.grade= binding.editNotaEdit.text.toString().toFloat()
-            if (verifierDadsEdit()) {
-                viewModel.updateBimester(bimester)
-                clearEditFields()
-                enableSaveRegisterMode()
-            }
-        }
-    }
 
-    private fun enableSaveRegisterMode() {
-        binding.editNotaEdit.visibility = View.GONE
-        binding.buttonAdicionarNotasEdit.visibility = View.GONE
-    }
 }

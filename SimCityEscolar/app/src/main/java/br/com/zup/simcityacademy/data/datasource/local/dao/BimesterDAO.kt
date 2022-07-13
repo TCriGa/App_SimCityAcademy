@@ -6,7 +6,7 @@ import br.com.zup.simcityacademy.domain.model.Bimester
 @Dao
 interface BimesterDAO {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertBimester(bimester: Bimester)
 
     @Query("SELECT * FROM information_bimester WHERE bimester_number =:bimesterNumber")
@@ -15,9 +15,9 @@ interface BimesterDAO {
     @Query("SELECT AVG(grade) FROM information_bimester WHERE grade =:gradeBimester")
     fun getGrade(gradeBimester: Float) : Float
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertGrades(grade: Bimester)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
+    @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateAVGGrade(bimester: Bimester)
 }
